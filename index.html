@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Months 🌷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SCREEN 1: COUNTDOWN — shown automatically before Sept 10     -->
+<!-- ============================================================ -->
+<section id="countdown-screen" class="screen">
+  <div class="soft-glow"></div>
+  <p class="eyebrow">something's coming</p>
+  <h1 class="script-heading">10 months, almost&nbsp;here</h1>
+  <div class="countdown">
+    <div class="time-block">
+      <span id="cd-days" class="time-num">00</span>
+      <span class="time-label">days</span>
+    </div>
+    <div class="time-block">
+      <span id="cd-hours" class="time-num">00</span>
+      <span class="time-label">hours</span>
+    </div>
+    <div class="time-block">
+      <span id="cd-mins" class="time-num">00</span>
+      <span class="time-label">minutes</span>
+    </div>
+    <div class="time-block">
+      <span id="cd-secs" class="time-num">00</span>
+      <span class="time-label">seconds</span>
+    </div>
+  </div>
+  <p class="countdown-footer">until September 10th 💌</p>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SCREEN 2: THE GIFT — shown automatically from Sept 10 onward  -->
+<!-- ============================================================ -->
+<section id="gift-screen" class="screen" hidden>
+
+  <!-- ---------- Scene A: the cat greeting ---------- -->
+  <div id="scene-cat" class="scene">
+    <div class="cat-wrap">
+      <svg id="cat-svg" viewBox="0 0 240 220" class="cat-svg" aria-hidden="true">
+        <ellipse class="cat-shadow" cx="120" cy="205" rx="70" ry="10"/>
+        <!-- ears -->
+        <path class="cat-fill" d="M55 70 L20 15 L85 55 Z"/>
+        <path class="cat-fill" d="M185 70 L220 15 L155 55 Z"/>
+        <path class="cat-inner-ear" d="M58 62 L38 30 L78 52 Z"/>
+        <path class="cat-inner-ear" d="M182 62 L202 30 L162 52 Z"/>
+        <!-- head -->
+        <ellipse class="cat-fill" cx="120" cy="120" rx="95" ry="82"/>
+        <!-- cheeks -->
+        <ellipse class="cat-cheek" cx="55" cy="140" rx="16" ry="10"/>
+        <ellipse class="cat-cheek" cx="185" cy="140" rx="16" ry="10"/>
+        <!-- eyes group (swapped by JS/CSS via classes) -->
+        <g id="cat-eyes">
+          <path class="eye-path" d="M75 108 Q90 92 105 108" />
+          <path class="eye-path" d="M135 108 Q150 92 165 108" />
+        </g>
+        <!-- eyebrows (hidden unless angry) -->
+        <g id="cat-brows" class="cat-brows">
+          <path class="brow-path" d="M68 88 L102 100" />
+          <path class="brow-path" d="M172 88 L138 100" />
+        </g>
+        <!-- nose -->
+        <path class="cat-nose" d="M113 128 L127 128 L120 138 Z"/>
+        <!-- mouth (swapped by JS) -->
+        <path id="cat-mouth" class="mouth-path" d="M120 138 Q120 150 100 148 M120 138 Q120 150 140 148"/>
+        <!-- whiskers -->
+        <path class="whisker" d="M35 132 L75 128 M35 148 L75 142"/>
+        <path class="whisker" d="M205 132 L165 128 M205 148 L165 142"/>
+      </svg>
+    </div>
+
+    <p id="cat-speech" class="speech-bubble">Happy 10 months my love 🩷<br>Do you want to see your gift?</p>
+
+    <div class="button-row">
+      <button id="btn-yes" class="btn btn-yes">yes</button>
+      <button id="btn-no" class="btn btn-no">no</button>
+    </div>
+  </div>
+
+  <!-- ---------- Scene B: bouquet + card ---------- -->
+  <div id="scene-bouquet" class="scene" hidden>
+    <p class="script-heading small">for you</p>
+
+    <svg viewBox="0 0 260 220" class="bouquet-svg" aria-hidden="true">
+      <!-- wrapping -->
+      <path class="wrap-paper" d="M70 210 L130 120 L190 210 Z"/>
+      <!-- stems -->
+      <path class="stem" d="M130 130 L130 165"/>
+      <path class="stem" d="M110 140 L120 168"/>
+      <path class="stem" d="M150 140 L140 168"/>
+      <!-- flowers -->
+      <g class="flower" transform="translate(130,95)">
+        <circle class="petal" cx="0" cy="-16" r="13"/>
+        <circle class="petal" cx="15" cy="-6" r="13"/>
+        <circle class="petal" cx="9" cy="12" r="13"/>
+        <circle class="petal" cx="-9" cy="12" r="13"/>
+        <circle class="petal" cx="-15" cy="-6" r="13"/>
+        <circle class="flower-center" cx="0" cy="0" r="9"/>
+      </g>
+      <g class="flower flower-alt" transform="translate(85,110) scale(0.8)">
+        <circle class="petal-alt" cx="0" cy="-16" r="13"/>
+        <circle class="petal-alt" cx="15" cy="-6" r="13"/>
+        <circle class="petal-alt" cx="9" cy="12" r="13"/>
+        <circle class="petal-alt" cx="-9" cy="12" r="13"/>
+        <circle class="petal-alt" cx="-15" cy="-6" r="13"/>
+        <circle class="flower-center-alt" cx="0" cy="0" r="8"/>
+      </g>
+      <g class="flower" transform="translate(178,112) scale(0.85)">
+        <circle class="petal" cx="0" cy="-16" r="13"/>
+        <circle class="petal" cx="15" cy="-6" r="13"/>
+        <circle class="petal" cx="9" cy="12" r="13"/>
+        <circle class="petal" cx="-9" cy="12" r="13"/>
+        <circle class="petal" cx="-15" cy="-6" r="13"/>
+        <circle class="flower-center" cx="0" cy="0" r="9"/>
+      </g>
+      <ellipse class="leaf" cx="105" cy="150" rx="16" ry="7" transform="rotate(-30 105 150)"/>
+      <ellipse class="leaf" cx="155" cy="150" rx="16" ry="7" transform="rotate(30 155 150)"/>
+    </svg>
+
+    <button id="card-btn" class="card-btn" aria-label="Open the card">
+      <svg viewBox="0 0 100 70" class="card-svg">
+        <rect class="card-body" x="2" y="2" width="96" height="66" rx="6"/>
+        <path class="card-flap" d="M2 8 L50 42 L98 8"/>
+        <circle class="card-heart" cx="50" cy="45" r="7"/>
+      </svg>
+      <span class="card-hint">press the card to open it</span>
+    </button>
+  </div>
+
+  <!-- ---------- Scene C: the letter ---------- -->
+  <div id="scene-letter" class="scene" hidden>
+    <div class="letter-paper">
+      <!--
+        ✏️  WRITE YOUR LETTER HERE.
+        This is plain HTML, so:
+          - press Enter for a new paragraph → wrap it in <p>...</p>
+          - you can use <br> for a single line break inside a paragraph
+        Everything between the <div class="letter-text"> tags is what she'll read.
+      -->
+      <div class="letter-text">
+        <p>My love,</p>
+        <p>
+          Write your letter to her right here. Replace this whole paragraph
+          (and add as many more as you'd like) with whatever you want to say —
+          this is the part only you can write.
+        </p>
+        <p>Happy 10 months. Here's to many, many more.</p>
+        <p class="signature">— yours</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
