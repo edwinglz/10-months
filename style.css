@@ -136,7 +136,7 @@ body {
 .cat-fill { fill: var(--white); stroke: var(--rose); stroke-width: 3; }
 .cat-inner-ear { fill: var(--blush-deep); }
 .cat-cheek { fill: var(--blush-deep); opacity: 0.8; }
-.cat-nose { fill: var(--rose); }
+.cat-nose { fill: var(--white); }
 .eye-path, .mouth-path, .whisker, .brow-path {
   fill: none;
   stroke: var(--ink);
