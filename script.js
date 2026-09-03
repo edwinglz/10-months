@@ -3,7 +3,7 @@
 // Format: new Date(year, monthIndex, day, hour, minute)
 // Note: monthIndex is 0-based, so September = 8.
 // ============================================================
-const TARGET_DATE = new Date(2026, 8, 10, 0, 0, 0);
+const TARGET_DATE = new Date(2020, 8, 10, 0, 0, 0);
 
 const countdownScreen = document.getElementById('countdown-screen');
 const giftScreen = document.getElementById('gift-screen');
@@ -35,17 +35,18 @@ function renderCountdown() {
 function showGift() {
   countdownScreen.hidden = true;
   giftScreen.hidden = false;
-  clearInterval(countdownTimer);
+  if (countdownTimer) clearInterval(countdownTimer);
 }
 
 // Decide which screen to show on load, then keep the countdown ticking
 // in case the page is left open right through midnight.
+let countdownTimer = null;
 if (msRemaining() <= 0) {
   showGift();
 } else {
   renderCountdown();
+  countdownTimer = setInterval(renderCountdown, 1000);
 }
-const countdownTimer = setInterval(renderCountdown, 1000);
 
 
 // ============================================================
@@ -55,34 +56,48 @@ const sceneCat = document.getElementById('scene-cat');
 const sceneBouquet = document.getElementById('scene-bouquet');
 const sceneLetter = document.getElementById('scene-letter');
 
-const catSvg = document.getElementById('cat-svg');
-const catMouth = document.getElementById('cat-mouth');
-const catSpeech = document.getElementById('cat-speech');
+const charImg = document.getElementById('char-img');
+const charSpeech = document.getElementById('cat-speech');
 const btnYes = document.getElementById('btn-yes');
 const btnNo = document.getElementById('btn-no');
 const cardBtn = document.getElementById('card-btn');
+const balloonLayer = document.getElementById('balloon-layer');
 
-const MOUTHS = {
-  happy: 'M100 140 Q120 158 140 140',
-  mad: 'M102 148 Q120 134 138 148',
-  veryMad: 'M100 150 Q120 130 140 150 M105 150 Q120 140 135 150'
-};
+function launchBalloons() {
+  const positions = [8, 22, 38, 52, 66, 80, 92];
+  const images = ['images/balloon1.png', 'images/balloon2.png'];
+
+  positions.forEach((leftPercent, i) => {
+    const img = document.createElement('img');
+    img.src = images[i % images.length];
+    img.className = 'balloon-pop';
+    img.alt = '';
+    const size = 46 + Math.random() * 34;
+    img.style.width = `${size}px`;
+    img.style.left = `${leftPercent}%`;
+    img.style.animationDelay = `${Math.random() * 0.25}s`;
+    balloonLayer.appendChild(img);
+
+    img.addEventListener('animationend', () => img.remove());
+  });
+}
 
 let noClicks = 0;
 
 btnNo.addEventListener('click', () => {
   noClicks += 1;
 
+  charImg.src = 'images/afterNo.png';
+  charImg.classList.remove('state-mad', 'state-veryMad');
+  // restart the shake animation each click, even if the same class was already applied
+  void charImg.offsetWidth;
+
   if (noClicks === 1) {
-    catSvg.classList.remove('state-veryMad');
-    catSvg.classList.add('state-mad');
-    catMouth.setAttribute('d', MOUTHS.mad);
-    catSpeech.textContent = 'Try again!';
+    charImg.classList.add('state-mad');
+    charSpeech.textContent = 'Try again!';
   } else {
-    catSvg.classList.remove('state-mad');
-    catSvg.classList.add('state-veryMad');
-    catMouth.setAttribute('d', MOUTHS.veryMad);
-    catSpeech.textContent = 'I SAID TRY AGAIN';
+    charImg.classList.add('state-veryMad');
+    charSpeech.textContent = 'I SAID TRY AGAIN';
   }
 });
 
@@ -92,6 +107,7 @@ btnYes.addEventListener('click', () => {
 });
 
 cardBtn.addEventListener('click', () => {
+  launchBalloons();
   sceneBouquet.hidden = true;
   sceneLetter.hidden = false;
 });

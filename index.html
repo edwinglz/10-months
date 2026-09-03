@@ -11,6 +11,21 @@
 </head>
 <body>
 
+<!-- Decorative sketchy hearts, sit behind everything, persist on every screen -->
+<div class="sketch-hearts" aria-hidden="true">
+  <svg class="sketch-heart h1" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h2" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h3" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h4" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h5" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h6" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h7" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h8" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+</div>
+
+<!-- Balloons burst here on envelope open, populated by JS -->
+<div id="balloon-layer" class="balloon-layer" aria-hidden="true"></div>
+
 <!-- ============================================================ -->
 <!-- SCREEN 1: COUNTDOWN — shown automatically before Sept 10     -->
 <!-- ============================================================ -->
@@ -47,37 +62,8 @@
 
   <!-- ---------- Scene A: the cat greeting ---------- -->
   <div id="scene-cat" class="scene">
-    <div class="cat-wrap">
-      <svg id="cat-svg" viewBox="0 0 240 220" class="cat-svg" aria-hidden="true">
-        <ellipse class="cat-shadow" cx="120" cy="205" rx="70" ry="10"/>
-        <!-- ears -->
-        <path class="cat-fill" d="M55 70 L20 15 L85 55 Z"/>
-        <path class="cat-fill" d="M185 70 L220 15 L155 55 Z"/>
-        <path class="cat-inner-ear" d="M58 62 L38 30 L78 52 Z"/>
-        <path class="cat-inner-ear" d="M182 62 L202 30 L162 52 Z"/>
-        <!-- head -->
-        <ellipse class="cat-fill" cx="120" cy="120" rx="95" ry="82"/>
-        <!-- cheeks -->
-        <ellipse class="cat-cheek" cx="55" cy="140" rx="16" ry="10"/>
-        <ellipse class="cat-cheek" cx="185" cy="140" rx="16" ry="10"/>
-        <!-- eyes group (swapped by JS/CSS via classes) -->
-        <g id="cat-eyes">
-          <path class="eye-path" d="M75 108 Q90 92 105 108" />
-          <path class="eye-path" d="M135 108 Q150 92 165 108" />
-        </g>
-        <!-- eyebrows (hidden unless angry) -->
-        <g id="cat-brows" class="cat-brows">
-          <path class="brow-path" d="M68 88 L102 100" />
-          <path class="brow-path" d="M172 88 L138 100" />
-        </g>
-        <!-- nose -->
-        <path class="cat-nose" d="M113 128 L127 128 L120 138 Z"/>
-        <!-- mouth (swapped by JS) -->
-        <path id="cat-mouth" class="mouth-path" d="M120 138 Q120 150 100 148 M120 138 Q120 150 140 148"/>
-        <!-- whiskers -->
-        <path class="whisker" d="M35 132 L75 128 M35 148 L75 142"/>
-        <path class="whisker" d="M205 132 L165 128 M205 148 L165 142"/>
-      </svg>
+    <div class="char-wrap">
+      <img id="char-img" class="char-img" src="images/beforeOpening.png" alt="">
     </div>
 
     <p id="cat-speech" class="speech-bubble">Happy 10 months my love 🩷<br>Do you want to see your gift?</p>
@@ -92,49 +78,21 @@
   <div id="scene-bouquet" class="scene" hidden>
     <p class="script-heading small">for you</p>
 
-    <svg viewBox="0 0 260 220" class="bouquet-svg" aria-hidden="true">
-      <!-- wrapping -->
-      <path class="wrap-paper" d="M70 210 L130 120 L190 210 Z"/>
-      <!-- stems -->
-      <path class="stem" d="M130 130 L130 165"/>
-      <path class="stem" d="M110 140 L120 168"/>
-      <path class="stem" d="M150 140 L140 168"/>
-      <!-- flowers -->
-      <g class="flower" transform="translate(130,95)">
-        <circle class="petal" cx="0" cy="-16" r="13"/>
-        <circle class="petal" cx="15" cy="-6" r="13"/>
-        <circle class="petal" cx="9" cy="12" r="13"/>
-        <circle class="petal" cx="-9" cy="12" r="13"/>
-        <circle class="petal" cx="-15" cy="-6" r="13"/>
-        <circle class="flower-center" cx="0" cy="0" r="9"/>
-      </g>
-      <g class="flower flower-alt" transform="translate(85,110) scale(0.8)">
-        <circle class="petal-alt" cx="0" cy="-16" r="13"/>
-        <circle class="petal-alt" cx="15" cy="-6" r="13"/>
-        <circle class="petal-alt" cx="9" cy="12" r="13"/>
-        <circle class="petal-alt" cx="-9" cy="12" r="13"/>
-        <circle class="petal-alt" cx="-15" cy="-6" r="13"/>
-        <circle class="flower-center-alt" cx="0" cy="0" r="8"/>
-      </g>
-      <g class="flower" transform="translate(178,112) scale(0.85)">
-        <circle class="petal" cx="0" cy="-16" r="13"/>
-        <circle class="petal" cx="15" cy="-6" r="13"/>
-        <circle class="petal" cx="9" cy="12" r="13"/>
-        <circle class="petal" cx="-9" cy="12" r="13"/>
-        <circle class="petal" cx="-15" cy="-6" r="13"/>
-        <circle class="flower-center" cx="0" cy="0" r="9"/>
-      </g>
-      <ellipse class="leaf" cx="105" cy="150" rx="16" ry="7" transform="rotate(-30 105 150)"/>
-      <ellipse class="leaf" cx="155" cy="150" rx="16" ry="7" transform="rotate(30 155 150)"/>
-    </svg>
+    <img class="char-img flower-boy-img" src="images/flowerBoy.png" alt="">
 
-    <button id="card-btn" class="card-btn" aria-label="Open the card">
-      <svg viewBox="0 0 100 70" class="card-svg">
-        <rect class="card-body" x="2" y="2" width="96" height="66" rx="6"/>
-        <path class="card-flap" d="M2 8 L50 42 L98 8"/>
-        <circle class="card-heart" cx="50" cy="45" r="7"/>
+
+    <button id="card-btn" class="card-btn" aria-label="Open the envelope">
+      <svg viewBox="0 0 180 130" class="card-svg">
+        <rect class="card-body" x="4" y="4" width="172" height="122" rx="6"/>
+        <path class="card-flap" d="M6 10 L90 68 L174 10"/>
+        <path class="card-seam" d="M6 120 L90 68"/>
+        <path class="card-seam" d="M174 120 L90 68"/>
+        <g class="card-heart-seal" transform="translate(90,68) scale(1.5)">
+          <path d="M0,-6 C-3,-11 -11,-11 -11,-3 C-11,4 -4,9 0,14 C4,9 11,4 11,-3 C11,-11 3,-11 0,-6 Z"/>
+          <path class="seal-shine" d="M-7,-6 C-8,-4 -8,-1 -6,0" />
+        </g>
       </svg>
-      <span class="card-hint">press the card to open it</span>
+      <span class="card-hint">press the envelope to open it</span>
     </button>
   </div>
 

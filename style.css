@@ -130,29 +130,15 @@ body {
   animation: fadeIn 0.7s ease both;
 }
 
-/* --- cat --- */
-.cat-wrap { margin-bottom: 8px; }
-.cat-svg { width: min(60vw, 220px); height: auto; }
-.cat-fill { fill: var(--white); stroke: var(--rose); stroke-width: 3; }
-.cat-inner-ear { fill: var(--blush-deep); }
-.cat-cheek { fill: var(--blush-deep); opacity: 0.8; }
-.cat-nose { fill: var(--white); }
-.eye-path, .mouth-path, .whisker, .brow-path {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 4;
-  stroke-linecap: round;
+/* --- character images --- */
+.char-wrap { margin-bottom: 8px; }
+.char-img {
+  width: min(55vw, 200px);
+  height: auto;
+  filter: drop-shadow(0 10px 16px rgba(178,58,90,0.18));
 }
-.whisker { stroke-width: 2.5; opacity: 0.5; }
-.cat-shadow { fill: var(--rose-mid); opacity: 0.15; }
-.cat-brows { opacity: 0; transition: opacity 0.25s ease; }
-
-#cat-svg.state-mad .cat-brows { opacity: 1; }
-#cat-svg.state-mad .eye-path { stroke: var(--rose-deep); }
-#cat-svg.state-mad { animation: shake 0.4s ease; }
-#cat-svg.state-veryMad { animation: shakeHard 0.5s ease; }
-#cat-svg.state-veryMad .cat-fill { stroke: var(--rose-deep); }
-#cat-svg.state-veryMad .cat-cheek { fill: #f0a0b0; }
+.char-img.state-mad { animation: shake 0.4s ease; }
+.char-img.state-veryMad { animation: shakeHard 0.5s ease; }
 
 @keyframes shake {
   0%,100% { transform: translateX(0); }
@@ -209,15 +195,13 @@ body {
 }
 .btn-no:hover { border-color: var(--rose); }
 
-/* --- bouquet --- */
-.bouquet-svg { width: min(70vw, 260px); height: auto; margin: 4px 0 6px; }
-.wrap-paper { fill: var(--blush-deep); }
-.stem { stroke: #7fa06b; stroke-width: 3; fill: none; stroke-linecap: round; }
-.leaf { fill: #8fb579; }
-.petal { fill: var(--rose-mid); }
-.flower-center { fill: var(--gold); }
-.petal-alt { fill: #f1b8c4; }
-.flower-center-alt { fill: #e8935f; }
+/* --- bouquet / flower boy --- */
+.flower-boy-img {
+  width: min(65vw, 220px);
+  height: auto;
+  margin: 4px 0 6px;
+  filter: drop-shadow(0 10px 16px rgba(178,58,90,0.18));
+}
 
 .card-btn {
   background: none;
@@ -229,17 +213,18 @@ body {
   gap: 10px;
   padding: 6px;
 }
-.card-svg { width: 150px; height: auto; }
-.card-body { fill: var(--white); stroke: var(--rose); stroke-width: 2; }
-.card-flap { fill: none; stroke: var(--rose); stroke-width: 2; }
-.card-heart { fill: var(--rose); }
+.card-svg { width: 190px; height: auto; transition: transform 0.2s ease; }
+.card-body { fill: var(--white); stroke: var(--ink); stroke-width: 3; }
+.card-flap { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.card-seam { fill: none; stroke: var(--blush-deep); stroke-width: 2.5; stroke-linejoin: round; }
+.card-heart-seal path:first-child { fill: var(--rose); stroke: var(--ink); stroke-width: 1.4; }
+.seal-shine { fill: none; stroke: #ffffff; stroke-width: 1.6; stroke-linecap: round; opacity: 0.75; }
 .card-hint {
   font-size: 0.85rem;
   color: var(--rose-mid);
   letter-spacing: 0.02em;
 }
 .card-btn:hover .card-svg { transform: translateY(-3px); }
-.card-svg { transition: transform 0.2s ease; }
 
 /* --- letter --- */
 .letter-paper {
@@ -278,4 +263,54 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* ============ decorative sketchy hearts (behind everything, all screens) ============ */
+.sketch-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.sketch-heart {
+  position: absolute;
+  fill: none;
+  stroke: var(--rose-mid);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.h1 { width: 34px; top: 8%;  left: 7%;   opacity: 0.16; transform: rotate(-14deg); }
+.h2 { width: 54px; top: 16%; right: 9%;  opacity: 0.13; transform: rotate(11deg); }
+.h3 { width: 26px; top: 32%; left: 4%;   opacity: 0.18; transform: rotate(6deg); }
+.h4 { width: 44px; top: 46%; right: 5%;  opacity: 0.14; transform: rotate(-9deg); }
+.h5 { width: 30px; top: 66%; left: 10%;  opacity: 0.17; transform: rotate(16deg); }
+.h6 { width: 50px; top: 74%; right: 12%; opacity: 0.12; transform: rotate(-6deg); }
+.h7 { width: 24px; top: 88%; left: 22%;  opacity: 0.16; transform: rotate(-18deg); }
+.h8 { width: 38px; top: 4%;  left: 44%;  opacity: 0.11; transform: rotate(9deg); }
+
+.screen { position: relative; z-index: 1; }
+
+/* ============ balloon launch animation ============ */
+.balloon-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 60;
+}
+.balloon-pop {
+  position: absolute;
+  bottom: -20%;
+  width: 64px;
+  height: auto;
+  animation-name: balloonFloat;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(0.25, 0.05, 0.3, 1);
+  animation-fill-mode: forwards;
+}
+@keyframes balloonFloat {
+
+  100% { transform: translateY(-135vh)  translateX(8px)  rotate(3deg); }
 }

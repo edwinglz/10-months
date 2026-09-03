@@ -1,4 +1,4 @@
-# 10 Months 🌷 — setup guide
+# 10 Months — setup guide
 
 ## What's in here
 - `index.html` — the page structure (countdown + the gift scenes)
