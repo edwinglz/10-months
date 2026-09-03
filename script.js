@@ -66,19 +66,31 @@ const balloonLayer = document.getElementById('balloon-layer');
 function launchBalloons() {
   const positions = [8, 22, 38, 52, 66, 80, 92];
   const images = ['images/balloon1.png', 'images/balloon2.png'];
+  // three vertical "levels" queued below the screen so the cluster looks fuller
+  // as it rises, rather than a single thin row.
+  const rows = [
+    { bottom: -20, delayBase: 0 },
+    { bottom: -50, delayBase: 0.12 },
+    { bottom: -80, delayBase: 0.22 }
+  ];
 
-  positions.forEach((leftPercent, i) => {
-    const img = document.createElement('img');
-    img.src = images[i % images.length];
-    img.className = 'balloon-pop';
-    img.alt = '';
-    const size = 46 + Math.random() * 34;
-    img.style.width = `${size}px`;
-    img.style.left = `${leftPercent}%`;
-    img.style.animationDelay = `${Math.random() * 0.25}s`;
-    balloonLayer.appendChild(img);
+  rows.forEach((row, rowIndex) => {
+    positions.forEach((leftPercent, i) => {
+      const img = document.createElement('img');
+      img.src = images[(i + rowIndex) % images.length];
+      img.className = 'balloon-pop';
+      img.alt = '';
+      const size = 46 + Math.random() * 34;
+      img.style.width = `${size}px`;
+      // offset each row's x positions slightly so balloons don't stack in a perfect grid
+      const jitter = rowIndex * 5 - 5;
+      img.style.left = `${leftPercent + jitter}%`;
+      img.style.bottom = `${row.bottom}%`;
+      img.style.animationDelay = `${row.delayBase + Math.random() * 0.2}s`;
+      balloonLayer.appendChild(img);
 
-    img.addEventListener('animationend', () => img.remove());
+      img.addEventListener('animationend', () => img.remove());
+    });
   });
 }
 
@@ -94,10 +106,10 @@ btnNo.addEventListener('click', () => {
 
   if (noClicks === 1) {
     charImg.classList.add('state-mad');
-    charSpeech.textContent = 'Try again!';
+    charSpeech.textContent = 'intenta otra vez!';
   } else {
     charImg.classList.add('state-veryMad');
-    charSpeech.textContent = 'I SAID TRY AGAIN';
+    charSpeech.textContent = 'QUE INTENTES OTRA VEZ 🤬';
   }
 });
 

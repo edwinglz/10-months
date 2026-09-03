@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -21,6 +21,12 @@
   <svg class="sketch-heart h6" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
   <svg class="sketch-heart h7" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
   <svg class="sketch-heart h8" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h9" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h10" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h11" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h12" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h13" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
+  <svg class="sketch-heart h14" viewBox="0 0 44 40"><path d="M22,9 C16,-2 -1,-1 0,11 C1,22 13,27 22,37 C32,27 43,23 44,11 C45,-1 28,-2 22,9 Z"/></svg>
 </div>
 
 <!-- Balloons burst here on envelope open, populated by JS -->
@@ -31,27 +37,27 @@
 <!-- ============================================================ -->
 <section id="countdown-screen" class="screen">
   <div class="soft-glow"></div>
-  <p class="eyebrow">something's coming</p>
-  <h1 class="script-heading">10 months, almost&nbsp;here</h1>
+  <p class="eyebrow">10 mesesitos <3</p>
+  <h1 class="script-heading">Nos faltan solo&nbsp;</h1>
   <div class="countdown">
     <div class="time-block">
       <span id="cd-days" class="time-num">00</span>
-      <span class="time-label">days</span>
+      <span class="time-label">dias</span>
     </div>
     <div class="time-block">
       <span id="cd-hours" class="time-num">00</span>
-      <span class="time-label">hours</span>
+      <span class="time-label">horas</span>
     </div>
     <div class="time-block">
       <span id="cd-mins" class="time-num">00</span>
-      <span class="time-label">minutes</span>
+      <span class="time-label">minutos</span>
     </div>
     <div class="time-block">
       <span id="cd-secs" class="time-num">00</span>
-      <span class="time-label">seconds</span>
+      <span class="time-label">segundos</span>
     </div>
   </div>
-  <p class="countdown-footer">until September 10th 💌</p>
+  <p class="countdown-footer">para el 10 de Septiembre 💌</p>
 </section>
 
 
@@ -66,17 +72,17 @@
       <img id="char-img" class="char-img" src="images/beforeOpening.png" alt="">
     </div>
 
-    <p id="cat-speech" class="speech-bubble">Happy 10 months my love 🩷<br>Do you want to see your gift?</p>
+    <p id="cat-speech" class="speech-bubble">Felices 10 meses mi amor 🩷<br>Quieres ver tu regalo?</p>
 
     <div class="button-row">
-      <button id="btn-yes" class="btn btn-yes">yes</button>
+      <button id="btn-yes" class="btn btn-yes">Si!</button>
       <button id="btn-no" class="btn btn-no">no</button>
     </div>
   </div>
 
   <!-- ---------- Scene B: bouquet + card ---------- -->
   <div id="scene-bouquet" class="scene" hidden>
-    <p class="script-heading small">for you</p>
+    <p class="script-heading small">toma para tiiii <3</p>
 
     <img class="char-img flower-boy-img" src="images/flowerBoy.png" alt="">
 
@@ -92,35 +98,38 @@
           <path class="seal-shine" d="M-7,-6 C-8,-4 -8,-1 -6,0" />
         </g>
       </svg>
-      <span class="card-hint">press the envelope to open it</span>
+      <span class="card-hint">hint: picale</span>
     </button>
   </div>
 
   <!-- ---------- Scene C: the letter ---------- -->
   <div id="scene-letter" class="scene" hidden>
-    <div class="letter-paper">
-      <!--
-        ✏️  WRITE YOUR LETTER HERE.
-        This is plain HTML, so:
-          - press Enter for a new paragraph → wrap it in <p>...</p>
-          - you can use <br> for a single line break inside a paragraph
-        Everything between the <div class="letter-text"> tags is what she'll read.
-      -->
-      <div class="letter-text">
-        <p>My love,</p>
-        <p>
-          Write your letter to her right here. Replace this whole paragraph
-          (and add as many more as you'd like) with whatever you want to say —
-          this is the part only you can write.
-        </p>
-        <p>Happy 10 months. Here's to many, many more.</p>
-        <p class="signature">— yours</p>
+    <div class="letter-wrap">
+      <img class="peek-char" src="images/afterOpening.png" alt="">
+      <div class="letter-paper">
+        <!--
+          ✏️  WRITE YOUR LETTER HERE.
+          This is plain HTML, so:
+            - press Enter for a new paragraph → wrap it in <p>...</p>
+            - you can use <br> for a single line break inside a paragraph
+          Everything between the <div class="letter-text"> tags is what she'll read.
+        -->
+        <div class="letter-text">
+          <p>My love,</p>
+          <p>
+            Write your letter to her right here. Replace this whole paragraph
+            (and add as many more as you'd like) with whatever you want to say —
+            this is the part only you can write.
+          </p>
+          <p>Happy 10 months. Here's to many, many more.</p>
+          <p class="signature">— yours</p>
+        </div>
       </div>
     </div>
   </div>
 
 </section>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>
