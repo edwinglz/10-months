@@ -3,7 +3,7 @@
 // Format: new Date(year, monthIndex, day, hour, minute)
 // Note: monthIndex is 0-based, so September = 8.
 // ============================================================
-const TARGET_DATE = new Date(2020, 8, 10, 0, 0, 0);
+const TARGET_DATE = new Date(2026, 8, 10, 0, 0, 0);
 
 const countdownScreen = document.getElementById('countdown-screen');
 const giftScreen = document.getElementById('gift-screen');
@@ -107,9 +107,21 @@ btnNo.addEventListener('click', () => {
   if (noClicks === 1) {
     charImg.classList.add('state-mad');
     charSpeech.textContent = 'Intenta otra vez!';
-  } else {
+  } else if (noClicks === 2) {
     charImg.classList.add('state-veryMad');
     charSpeech.textContent = 'QUE INTENTES OTRA VEZ 🤬';
+  }else if (noClicks === 3){
+    charImg.classList.add('state-veryMad');
+    charSpeech.textContent = 'YAAAAAAAAAAAAAAAAAAAAAAA 🤬';
+  }else if (noClicks === 4){
+    charImg.classList.add('state-veryMad');
+    charSpeech.textContent = 'SI LE DAS OTRA VEZ A NO ERES GEI';
+  }else if (noClicks === 5){
+    charImg.classList.add('state-veryMad');
+    charSpeech.textContent = 'ADIOS GEI';
+  }else{
+    charImg.classList.add('state-veryMad');
+    charSpeech.textContent = '...';
   }
 });
 
