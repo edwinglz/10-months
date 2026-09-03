@@ -106,7 +106,7 @@ btnNo.addEventListener('click', () => {
 
   if (noClicks === 1) {
     charImg.classList.add('state-mad');
-    charSpeech.textContent = 'intenta otra vez!';
+    charSpeech.textContent = 'Intenta otra vez!';
   } else {
     charImg.classList.add('state-veryMad');
     charSpeech.textContent = 'QUE INTENTES OTRA VEZ 🤬';
