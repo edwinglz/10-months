@@ -3,7 +3,7 @@
 // Format: new Date(year, monthIndex, day, hour, minute)
 // Note: monthIndex is 0-based, so September = 8.
 // ============================================================
-const TARGET_DATE = new Date(2026, 8, 10, 0, 0, 0);
+const TARGET_DATE = new Date(2020, 8, 10, 0, 0, 0);
 
 const countdownScreen = document.getElementById('countdown-screen');
 const giftScreen = document.getElementById('gift-screen');
