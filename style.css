@@ -32,7 +32,7 @@ body {
 }
 
 .script-heading {
-  font-family: 'Caveat', cursive;
+  font-family: 'caveat', cursive;
   font-weight: 700;
   color: var(--rose-deep);
   font-size: clamp(2.4rem, 7vw, 3.6rem);
